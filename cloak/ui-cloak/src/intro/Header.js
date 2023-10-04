@@ -44,8 +44,8 @@ const Header = () => {
         {/* left side */}
         <div className="flex flex-col items-start space-y-4">
           <h2
-            className="montserrat-heading text-left text-[1.7rem] font-bold 
-          text-[#FDF0EF] sm:text-[2.3rem] xl:text-[3.3rem]"
+            className="montserrat-header text-left text-[1.6rem] font-bold 
+          text-[#FDF0EF] sm:text-[2.2rem] xl:text-[3.2rem]"
           >
             Stay Anonymous & secure.
           </h2>

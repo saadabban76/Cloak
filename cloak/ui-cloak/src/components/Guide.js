@@ -94,7 +94,7 @@ const Demo = ({ show, totalTrx, totalFunds }) => {
               <div className="flex space-x-2">
                 <MdVerifiedUser color="#FF5757" size={29} />
                 <p className="flex-1">
-                  Load your #wallet-privateKey to help you withdraw funds easily . If already loaded ✔. Cool!
+                  Load your #tron-privateKey to help you withdraw funds easily . If already loaded ✔. Cool!
                   just pass the receipent address or use the connected wallet as receipent!
                 </p>
               </div>

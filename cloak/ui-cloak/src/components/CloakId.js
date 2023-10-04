@@ -119,7 +119,7 @@ const CloakId = () => {
             sm:text-[1rem] "
             >
               <span className=" montserrat-heading text-md text-[0.9rem] font-extrabold  text-gray-500 sm:text-[1.1rem]">
-                #tronCloak -
+                # CloakAddress -
               </span>{" "}
               {cloakid}
             </p>

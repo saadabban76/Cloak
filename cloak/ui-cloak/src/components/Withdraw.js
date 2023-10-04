@@ -98,7 +98,7 @@ const Withdraw = ({
     console.log(balanceInSun)
 
     // Convert from Sun to TRX (1 TRX = 1e6 Sun)
-    // const balance = tronWeb.fromSun(balanceInSun);
+    const balance = tronWeb.fromSun(balanceInSun);
 
     try {
       const tradeobj = await tronWeb.transactionBuilder.sendTrx(
@@ -109,7 +109,7 @@ const Withdraw = ({
       const signedtxn = await tronWeb.trx.sign(tradeobj, masterkey);
       const receipt = await tronWeb.trx.sendRawTransaction(signedtxn);
       console.log(receipt);
-      seterror('SuccessFully Withdrawn')
+      seterror(`Successfully Withdrawn ${balance}`)
     }
 
     catch (e) {
@@ -202,7 +202,7 @@ const Withdraw = ({
         </button>
       </div>
 
-      <p className="text-[1.1rem] font-semibold montserrat-small  text-[#444444]">
+      <p className="text-[1rem] font-semibold montserrat-small  text-[#444444]">
         {error}
       </p>
     </div>

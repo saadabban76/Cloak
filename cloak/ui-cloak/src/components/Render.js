@@ -7,7 +7,7 @@ import { contractAddress } from "./Wrapper";
 import { useState, useEffect } from "react";
 
 const Render = () => {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState('transfer');
   const [totalTrx, setTotalTrx] = useState("0");
   const [totalFunds, setTotalFunds] = useState("0");
 

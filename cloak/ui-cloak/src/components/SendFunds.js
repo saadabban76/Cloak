@@ -1,9 +1,9 @@
 import React, { useState, useMemo } from "react";
 import { Tokens } from "../helpers/Token";
-import { base58, keccak256 } from 'ethers/lib/utils';
+import { base58, keccak256 } from "ethers/lib/utils.js";
 import EllipticCurve from "elliptic";
 // import { AiOutlineArrowDown } from "react-icons/ai";
-import abi from "../build/contracts/EphKeys.json";
+// import abi from "../build/contracts/EphKeys.json";
 import Tron from "../assets/trx.png";
 import loading2 from "../assets/loading2.gif";
 import { toast } from "react-toastify";
@@ -208,10 +208,8 @@ const Send = () => {
         sharedsecret.toArray()[0].toString(16).padStart(2, "0") +
         sharedsecret.toArray()[31].toString(16);
     } catch (e) {
-      seterror(e.message);
       console.log("error", e);
     }
-    console.log(r,s,a)
 
     return true;
   };
@@ -232,85 +230,85 @@ const Send = () => {
   };
 
   const sendTrx = async () => {
-    //checking is tronweb connected
-    if (!tronWeb) {
-      toast.error("Please install Tron wallet");
-      return;
-    }
-    //validating the inputs
-    if (StealthmetaAddress === "" || amount === "") {
-      seterror("Please enter the address and amount");
-      setTimeout(() => {
-        seterror("");
-      }, 4000);
-      return;
-    }
+  //   //checking is tronweb connected
+  //   if (!tronWeb) {
+  //     toast.error("Please install Tron wallet");
+  //     return;
+  //   }
+  //   //validating the inputs
+  //   if (StealthmetaAddress === "" || amount === "") {
+  //     seterror("Please enter the address and amount");
+  //     setTimeout(() => {
+  //       seterror("");
+  //     }, 4000);
+  //     return;
+  //   }
 
-    setrunning(true);
+  //   setrunning(true);
 
-    //calculating stealth address
-    initializer();
+  //   //calculating stealth address
+  //   initializer();
 
-    //putting ephkeys to firebase
+  //   //putting ephkeys to firebase
 
-    try {
-      const contract = await tronWeb.contract(abi.abi, contractAddress);
-      const trx = await contract
-        .sendTron(r, s, a, receipent)
-        .send({ callValue: tronWeb.toSun(amount) });
-      // console.log("tron");
-      let txId = await tronWeb.trx.getTransaction(trx);
-      settrxid("https://shasta.tronscan.org/#/transaction/" + txId.txID);
-      // console.log("https://shasta.tronscan.org/#/transaction/" + txId.txID)
-    } catch (err) {
-      seterror(err);
-    }
-    storing();
-    setrunning(false);
+  //   try {
+  //     const contract = await tronWeb.contract(abi.abi, contractAddress);
+  //     const trx = await contract
+  //       .sendTron(r, s, a, receipent)
+  //       .send({ callValue: tronWeb.toSun(amount) });
+  //     // console.log("tron");
+  //     let txId = await tronWeb.trx.getTransaction(trx);
+  //     settrxid("https://shasta.tronscan.org/#/transaction/" + txId.txID);
+  //     // console.log("https://shasta.tronscan.org/#/transaction/" + txId.txID)
+  //   } catch (err) {
+  //     seterror(err);
+  //   }
+  //   storing();
+  //   setrunning(false);
   };
 
   const sendTrc20 = async () => {
-    setrunning(true);
+    // setrunning(true);
 
-    //calculating stealth address
-    initializer();
+    // //calculating stealth address
+    // initializer();
 
-    try {
-      const contract = await tronWeb.contract(abi.abi, contractAddress);
-      const trx = await contract
-        .sendTrc20(r, s, a, token, receipent, amount)
-        .send();
-      // console.log('trc20')
-      let txId = await tronWeb.trx.getTransaction(trx);
-      // console.log("https://shasta.tronscan.org/#/transaction/" + txId.txID);
-      settrxid("https://shasta.tronscan.org/#/transaction/" + txId.txID);
-    } catch (e) {
-      seterror(e.message);
-    }
-    storing();
-    setrunning(false);
+    // try {
+    //   const contract = await tronWeb.contract(abi.abi, contractAddress);
+    //   const trx = await contract
+    //     .sendTrc20(r, s, a, token, receipent, amount)
+    //     .send();
+    //   // console.log('trc20')
+    //   let txId = await tronWeb.trx.getTransaction(trx);
+    //   // console.log("https://shasta.tronscan.org/#/transaction/" + txId.txID);
+    //   settrxid("https://shasta.tronscan.org/#/transaction/" + txId.txID);
+    // } catch (e) {
+    //   seterror(e.message);
+    // }
+    // storing();
+    // setrunning(false);
   };
 
   const sendTrc721 = async () => {
-    setrunning(true);
+    // setrunning(true);
 
-    //calculating stealth address
-    initializer();
+    // //calculating stealth address
+    // initializer();
 
-    try {
-      const contract = await tronWeb.contract(abi.abi, contractAddress);
-      const trx = await contract
-        .sendTrc721(r, s, a, token, receipent, amount)
-        .send();
-      // console.log("trc721");
-      let txId = await tronWeb.trx.getTransaction(trx);
-      console.log("https://shasta.tronscan.org/#/transaction/" + txId.txID);
-      settrxid("https://shasta.tronscan.org/#/transaction/" + txId.txID);
-    } catch (e) {
-      seterror(e.message);
-    }
-    storing();
-    setrunning(false);
+    // try {
+    //   const contract = await tronWeb.contract(abi.abi, contractAddress);
+    //   const trx = await contract
+    //     .sendTrc721(r, s, a, token, receipent, amount)
+    //     .send();
+    //   // console.log("trc721");
+    //   let txId = await tronWeb.trx.getTransaction(trx);
+    //   console.log("https://shasta.tronscan.org/#/transaction/" + txId.txID);
+    //   settrxid("https://shasta.tronscan.org/#/transaction/" + txId.txID);
+    // } catch (e) {
+    //   seterror(e.message);
+    // }
+    // storing();
+    // setrunning(false);
   };
 
   async function approve() {

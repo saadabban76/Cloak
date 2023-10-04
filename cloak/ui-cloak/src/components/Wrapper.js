@@ -3,7 +3,7 @@ import CloakId from "./CloakId";
 import Render from "./Render";
 import { createContext, useMemo, useEffect } from "react";
 import { useState } from "react";
-import TronWeb from 'tronweb';
+// import TronWeb from 'tronweb';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Footer from "./Footer";
@@ -69,7 +69,7 @@ const Wrapper = () => {
 
     try {
       if (!tronWeb.defaultAddress.base58) {
-        toast.error("Open tronlink and connect with mainnet");
+        toast.error("Open tronlink and connect with shasta testnet");
         return;
       }
 
